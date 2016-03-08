@@ -45,13 +45,14 @@ function tasu(){
     document.getElementById("test5").textContent=shigoto2;
     document.getElementById("test6").textContent=(num1-ore[valT]);
     document.getElementById("test7").textContent=ar[parseInt(ore[valT])+(num1-ore[valT])];
+   // alart;
     var k = '<table class=thin>';
     k += '<tr><th bgcolor="#3DF74A">年月日</th><th bgcolor="#3DF74A">曜</th><th bgcolor="#3DF74A">予定</th></tr>';
     for (var i in ore){//Dataのメンバ？の個数回繰り返す。
        day = new Date(i);//iには'2007/5/5':'PHP攻略完了'の形式の前の方の文字列が入っている。
        w = week[day.getDay()];//曜日を取得
        if(ar[ore[i]]==undefined){ar[ore[i]]="休み";}
-       k += '<tr><th>' + i + '</th><td>' + w + '</td><td>' +ore[i]+" "+ ar[ore[i]] +'</td></tr>';
+       k += '<tr><th>' + i + '</th><td>' + w + '</td><td>' +parseInt(num1+(num1-ore[i]))+" "+ar[parseInt(ore[valT])+(num1-ore[valT])] +'</td></tr>';
         }
     k += '</table>';
     document.body.innerHTML = k;
