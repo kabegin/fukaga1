@@ -29,33 +29,34 @@ document.write("<center>前回の訪問日は" + lastDate + "です。</center>"
 setCookie("lastDate", getToday(), 365*2);
 function tasu(){
     var num1=document.keisan.elements[0].value;
-    var valT=getToday();
-    var shigoto=ar[ore[valT]];
-    var shigoto2=ar[num1];
-    if(shigoto=="   "){shigoto="白"};
-    if(shigoto==undefined){shigoto="休み"};
-    
-    if(shigoto2=="   "){shigoto2="白"};
-    if(shigoto2==undefined){shigoto2="休み"};
-  
+    var maime=String(num1.slice(-2));
+    var deban=parseInt(num1.slice(0,1));
+    var ad=new Date();
+    var add=new Date();
+   aday(add);
     document.getElementById("test1").textContent=num1;
-    document.getElementById("test").textContent=valT;
-    document.getElementById("test3").textContent=ore[valT];
-    document.getElementById("test4").textContent=shigoto;
-    document.getElementById("test5").textContent=shigoto2;
-    document.getElementById("test6").textContent=(num1-ore[valT]);
-    document.getElementById("test7").textContent=ar[parseInt(ore[valT])+(num1-ore[valT])];
-   // alart;
-    var k = '<table class=thin>';
+    document.getElementById("test").textContent=maime;
+    document.getElementById("test3").textContent=deban;
+    document.getElementById("test4").textContent=hi(ad);
+    document.getElementById("test5").textContent=hi(add);
+    aday(add);
+    document.getElementById("test6").textContent=hi(add);
+    aday(add);
+    document.getElementById("test7").textContent=hi(ad);
+   alert(ad);
+   var k = '<table class=thin>';
     k += '<tr><th bgcolor="#3DF74A">年月日</th><th bgcolor="#3DF74A">曜</th><th bgcolor="#3DF74A">予定</th></tr>';
-    for (var i in ore){//Dataのメンバ？の個数回繰り返す。
-       day = new Date(i);//iには'2007/5/5':'PHP攻略完了'の形式の前の方の文字列が入っている。
-       w = week[day.getDay()];//曜日を取得
-       if(ar[ore[i]]==undefined){ar[ore[i]]="休み";}
-       k += '<tr><th>' + i + '</th><td>' + w + '</td><td>' +parseInt(num1+(num1-ore[i]))+" "+ar[parseInt(ore[valT])+(num1-ore[valT])] +'</td></tr>';
-        }
+
+//    for (var i in ore){//Dataのメンバ？の個数回繰り返す。
+       day = new Date(hi(add));//iには'2007/5/5':'PHP攻略完了'の形式の前の方の文字列が入っている。
+      w = week[day.getDay()];//曜日を取得
+//       daiya_B=(parseInt(ore[i])+parseInt(teisu)+700)%700;
+//       if(ar[daiya_B]==undefined){ar[daiya_B]="休み";}
+    var ad=parseInt(deban+maime);
+       k += '<tr><th>' + hi(add) + '</th><td>' + w + '</td><td>' +deban+maime+" "+ar[ad] +'</td></tr>';
+//        }
     k += '</table>';
-    document.body.innerHTML = k;
+   document.body.innerHTML = k;
 }
 </script>
 <center>
@@ -70,8 +71,7 @@ function tasu(){
 <input type="number" min="100" max="748" value="428"/>
 </form>
 <button onclick="setYotei()">123</button>
-<button onclick="tasu()">get</button>
-<button onclick="check()">button</button>
+<button onclick="tasu()">Go</button>
 </center>
 
 </body>

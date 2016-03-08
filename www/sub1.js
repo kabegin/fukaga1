@@ -8,6 +8,19 @@ var dd = now.getDate();
 //if(dd < 10) dd = "0" + dd;
 return "" + yyyy +"/"+ mm+"/"+ + dd;
 }
+function aday(ab){
+ //   alert(ab);
+    var dayOfMonth=ab.getDate();
+ab.setDate(dayOfMonth+1);
+//alert(ab);
+return ab;
+}
+function hi(ad){
+var yyyy = ad.getFullYear();
+var mm = ad.getMonth() + 1;
+var dd = ad.getDate();
+return ""+yyyy+"/"+mm+"/"+dd;    
+}
 function getExpires(dd){
 var now = new Date();
 var expires = new Date(now.getTime()+24*60*60*1000*dd);
