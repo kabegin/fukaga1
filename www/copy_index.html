@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="components/loader.js"></script>
+    <script src="test1.js"></script>
+    <script src="sub1.js"></script>
+    <script src="calc.js"></script>
+    <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+    var na='data'
+document.cookie='data=123;'
+GetCookie(na);
+alert("aa"); 
+    </script>
+</head>
+<body>
+<div id="frame">
+    <!-- 電卓のディスプレイ -->
+    <div id="disp_div">
+      <input type="text" id="disp" value="0">
+    </div>
+    <!-- 電卓のボタン -->
+    <div id="buttons"><!--動的に作成する--></div>
+    <br/><br/><br/>
+  </div>
+<center>
+<p id="test1">2</p>
+<p id="test">1</p>
+<button onclick="setYotei()">123</button>
+<button onclick="GetCookie(na)">get</button>
+<button onclick="createButtons()">button</button>
+</center>
+
+</body>
+</html>
