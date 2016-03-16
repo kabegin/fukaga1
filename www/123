@@ -1,0 +1,68 @@
+ar arr = ["a", "b", "c"];
+
+if (arr.indexOf("a") >= 0){
+  // 存在する
+}
+
+if (arr.indexOf("a") == -1){
+  // 存在しない
+}
+
+var map = {a: 1, b: 2}
+
+console.log('a' in map);
+// => true
+console.log('c' in map);
+// => false
+
+辞書に既にデータが存在するか調べる
+
+// 辞書を作成
+var dictionary = new Array();
+
+// 検索したい ID 情報
+var id = 1000001;
+
+// 辞書に既にデータが存在するか調べる
+if(dictionary[id]){
+
+    console.log("データは存在する");
+
+}else{
+
+	console.log("データは存在しない");
+
+}
+辞書にデータを登録する
+
+// 辞書を作成
+var dictionary = new Array();
+
+// 管理したいデータ
+var user_b = { id:1000001, name:"花子", age:16 };
+
+// 辞書にデータが存在しないか調べる
+if(!dictionary[user_b.id]){
+
+    // 辞書に新しいデータを登録する
+	dictionary[user_b.id] = user_b;
+
+}
+/ 連想配列(ハッシュテーブル)にデータをセットする
+ar = {
+"あんまん":"100円",
+"にくまん":"110円",
+"カレーまん":"120円"
+}
+// キーが 連想配列にあるかチェックする
+myKey = "あんまん";
+if ( ar[ myKey ] === undefined ){
+alert ( myKey + "は、登録されていません。" );
+}
+// 連想配列の内容を全抽出
+for (i in ar){
+document.write ( i ,"=", ar[i], "<br>");
+}
+あんまん=100円
+にくまん=110円
+カレーまん=120円

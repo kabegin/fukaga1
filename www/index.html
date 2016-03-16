@@ -16,48 +16,74 @@
 </head>
 <body>
 <script>
-var value = getCookie("lastDate");
-if(value == ""){
-document.write("<center>初めての訪問です。</center>");
-}else{
-var yyyy = value.substring(0,4);
-var mm = value.substring(4,6);
-var dd = value.substring(6,8);
-var lastDate = (yyyy  + mm  + dd );
-document.write("<center>前回の訪問日は" + lastDate + "です。</center>");
-}
-setCookie("lastDate", getToday(), 365*2);
+
 function tasu(){
     var num1=document.keisan.elements[0].value;
+   // alert(num1);
     var maime=String(num1.slice(-2));
     var deban=parseInt(num1.slice(0,1));
     var ad=new Date();
+    ad.setFullYear(2016, 2, 7);
+    ad.setHours(0, 0, 0, 0);
     var add=new Date();
-   aday(add);
+    add.setHours(0, 0, 0, 0);
+    var nday=new Date(ad.getTime()+28*24*60*60*1000);
+   // alert(nday);
     document.getElementById("test1").textContent=num1;
     document.getElementById("test").textContent=maime;
     document.getElementById("test3").textContent=deban;
     document.getElementById("test4").textContent=hi(ad);
     document.getElementById("test5").textContent=hi(add);
-    aday(add);
-    document.getElementById("test6").textContent=hi(add);
-    aday(add);
-    document.getElementById("test7").textContent=hi(ad);
-   alert(ad);
+    document.getElementById("test6").textContent=nday;
+    document.getElementById("test7").textContent=(add.getTime()-ad.getTime())/(24*60*60*1000);
+ alert(((add.getTime()-ad.getTime())/(24*60*60*1000))%28);
    var k = '<table class=thin>';
-    k += '<tr><th bgcolor="#3DF74A">年月日</th><th bgcolor="#3DF74A">曜</th><th bgcolor="#3DF74A">予定</th></tr>';
-
-//    for (var i in ore){//Dataのメンバ？の個数回繰り返す。
-       day = new Date(hi(add));//iには'2007/5/5':'PHP攻略完了'の形式の前の方の文字列が入っている。
+    k += '<tr><th bgcolor="#3DF74A">年月日</th><th bgcolor="#3DF74A">曜</th><th bgcolor="#3DF74A">予定</th></tr>'; 
+     do{
+      // alert(((add.getTime()-ad.getTime())/(24*60*60*1000))%28);   
+      day = new Date(hi(add));//iには'2007/5/5':'PHP攻略完了'の形式の前の方の文字列が入っている。
       w = week[day.getDay()];//曜日を取得
-//       daiya_B=(parseInt(ore[i])+parseInt(teisu)+700)%700;
-//       if(ar[daiya_B]==undefined){ar[daiya_B]="休み";}
     var ad=parseInt(deban+maime);
+    if (ar[ad]=="   "){ar[ad]="白";}
+    if (ar[ad]==undefined){ar[ad]="休み";}
+   
        k += '<tr><th>' + hi(add) + '</th><td>' + w + '</td><td>' +deban+maime+" "+ar[ad] +'</td></tr>';
-//        }
+     // if (((add.getTime()-ad.getTime())/(24*60*60*1000))%28==0){deban;}else{alert(deban);}
+      deban+=1;
+      aday(add);
+      }while(deban<8);
+      maime=parseInt(maime, 10)+1;
+     // alert(maime);
+     for(j=1;j<10;j++){
+     for (i=1;i<8;i++){
+         day=new Date(hi(add));
+         w=week[day.getDay()];
+         var ad=(""+i+maime);
+      //   alert(ad);
+         if (ar[ad]=="   "){ar[ad]="白";}
+         if (ar[ad]==undefined){ar[ad]="休み";}
+       k += '<tr><th>' + hi(add) + '</th><td>' + w + '</td><td>' +i+maime+" "+ar[ad] +'</td></tr>';
+      aday(add);
+     }
+     maime=parseInt(maime, 10)+1;
+}
     k += '</table>';
    document.body.innerHTML = k;
 }
+function ta(){
+    var myDate=new Date();
+    myDate.setHours(0, 0, 0, 0);
+    myDate.setFullYear(2016);
+    myDate.setDate(8);
+    myDate.setMonth(1);
+    for (i=1;i<10;i++){
+  // document.write("東"+"</br>");
+    myDate.setDate(myDate.getDate()+28);
+    document.write(myDate+"</br>");
+    myDate.setDate(myDate.getDate()+28);
+    document.write(myDate+"</br>");}
+}
+
 </script>
 <center>
 <p id="test1">2</p>
@@ -67,11 +93,15 @@ function tasu(){
 <p id="test5">5</p>
 <p id="test6">6</p>
 <p id="test7">7</p>
+
 <form name="keisan">
 <input type="number" min="100" max="748" value="428"/>
 </form>
 <button onclick="setYotei()">123</button>
 <button onclick="tasu()">Go</button>
+<button onclick="ta()">から</button><br />
+
+
 </center>
 
 </body>
