@@ -48,8 +48,8 @@ function tasu(){
     if (ar[aq]==undefined){ar[aq]="休み";}
    
        k += '<tr><th>' + hi(add) + '</th><td>' + w + '</td><td>' +deban+maime+" "+ar[aq] +'</td></tr>';
-     // if (((add.getTime()-ad.getTime())/(24*60*60*1000))%28!=0){alert(deban);}else{alert(deban);}
-      deban+=1;
+      if (((add.getTime()-ad.getTime())/(24*60*60*1000))%28!=0){deban+=1;}else{deban=deban;}
+     // deban+=1;
       aday(add);
       }while(deban<8);
       maime=parseInt(maime, 10)+1;
@@ -58,6 +58,15 @@ function tasu(){
      for (i=1;i<8;i++){
          day=new Date(hi(add));
          w=week[day.getDay()];
+         if (((add.getTime()-ad.getTime())/(24*60*60*1000))%28==0){
+             var aq=(""+i+maime);
+              if (ar[aq]=="   "){ar[aq]="白";}
+         if (ar[aq]==undefined){ar[aq]="休み";}
+       k += '<tr><th>' + hi(add) + '</th><td>' + w + '</td><td>' +i+maime+" "+ar[aq] +'</td></tr>';
+      aday(add);
+      day=new Date(hi(add));
+         w=week[day.getDay()];
+             } 
          var aq=(""+i+maime);
       //   alert(ad);
          if (ar[aq]=="   "){ar[aq]="白";}
