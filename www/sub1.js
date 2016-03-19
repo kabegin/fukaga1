@@ -15,10 +15,10 @@ ab.setDate(dayOfMonth+1);
 //alert(ab);
 return ab;
 }
-function hi(ad){
-var yyyy = ad.getFullYear();
-var mm = ad.getMonth() + 1;
-var dd = ad.getDate();
+function hi(af){
+var yyyy = af.getFullYear();
+var mm = af.getMonth() + 1;
+var dd = af.getDate();
 return ""+yyyy+"/"+mm+"/"+dd;    
 }
 function getExpires(dd){

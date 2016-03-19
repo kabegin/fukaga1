@@ -43,12 +43,12 @@ function tasu(){
       // alert(((add.getTime()-ad.getTime())/(24*60*60*1000))%28);   
       day = new Date(hi(add));//iには'2007/5/5':'PHP攻略完了'の形式の前の方の文字列が入っている。
       w = week[day.getDay()];//曜日を取得
-    var ad=parseInt(deban+maime);
-    if (ar[ad]=="   "){ar[ad]="白";}
-    if (ar[ad]==undefined){ar[ad]="休み";}
+    var aq=parseInt(deban+maime);
+    if (ar[aq]=="   "){ar[aq]="白";}
+    if (ar[aq]==undefined){ar[aq]="休み";}
    
-       k += '<tr><th>' + hi(add) + '</th><td>' + w + '</td><td>' +deban+maime+" "+ar[ad] +'</td></tr>';
-     // if (((add.getTime()-ad.getTime())/(24*60*60*1000))%28==0){deban;}else{alert(deban);}
+       k += '<tr><th>' + hi(add) + '</th><td>' + w + '</td><td>' +deban+maime+" "+ar[aq] +'</td></tr>';
+     // if (((add.getTime()-ad.getTime())/(24*60*60*1000))%28!=0){alert(deban);}else{alert(deban);}
       deban+=1;
       aday(add);
       }while(deban<8);
@@ -58,11 +58,11 @@ function tasu(){
      for (i=1;i<8;i++){
          day=new Date(hi(add));
          w=week[day.getDay()];
-         var ad=(""+i+maime);
+         var aq=(""+i+maime);
       //   alert(ad);
-         if (ar[ad]=="   "){ar[ad]="白";}
-         if (ar[ad]==undefined){ar[ad]="休み";}
-       k += '<tr><th>' + hi(add) + '</th><td>' + w + '</td><td>' +i+maime+" "+ar[ad] +'</td></tr>';
+         if (ar[aq]=="   "){ar[aq]="白";}
+         if (ar[aq]==undefined){ar[aq]="休み";}
+       k += '<tr><th>' + hi(add) + '</th><td>' + w + '</td><td>' +i+maime+" "+ar[aq] +'</td></tr>';
       aday(add);
      }
      maime=parseInt(maime, 10)+1;
