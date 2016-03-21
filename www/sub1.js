@@ -44,14 +44,30 @@ return "";
 
 function setYotei(dst) {
   //  document.write(ore["2016/1/28"]);
-    var k = '<table class=thin>';
+    var k = '<input type="button" value="前のページへ戻る" onclick="location.reload(true)"><table class=thin>';
     k += '<tr><th bgcolor="#3DF74A">年月日</th><th bgcolor="#3DF74A">曜</th><th bgcolor="#3DF74A">予定</th></tr>';
     for (var i in ore){//Dataのメンバ？の個数回繰り返す。
        day = new Date(i);//iには'2007/5/5':'PHP攻略完了'の形式の前の方の文字列が入っている。
        w = week[day.getDay()];//曜日を取得
+       switch(day.getDay()){
+           case 0:
+               var c="<tr bgcolor='red'>";
+               var job=nichiyo[ore[i]];
+               break;
+           case 6:
+               var c="<tr bgcolor='aqua'>";
+               var job=doyo[ore[i]];
+               break;
+           default:
+               var c="<tr bgcolor='white'>";
+               var job=ar[ore[i]];
+               break;
+       }
        //k += '<tr><td>' + i + '</td><td>' + w + '</td><td>' + ore[i] + '</td></tr>';
-       if(ar[ore[i]]==undefined){ar[ore[i]]="休み";}
-       k += '<tr><th>' + i + '</th><td>' + w + '</td><td>' +ore[i]+" "+ ar[ore[i]] +'</td></tr>';
+       if(job==undefined){job="休み";}
+       if(job=="   "){job="白";}
+       //var c="<tr bgcolor='aqua'>";
+       k += c+'<th>' + i + '</th><td>' + w + '</td><td>' +ore[i]+" "+ job +'</td></tr>';
        // 値はDataオブジェクトのメンバ(i)の値はData[i]で取得できる。
     }
     k += '</table>';

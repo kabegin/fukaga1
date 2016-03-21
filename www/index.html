@@ -19,16 +19,14 @@
 
 function tasu(){
     var num1=document.keisan.elements[0].value;
-   // alert(num1);
     var maime=String(num1.slice(-2));
     var deban=parseInt(num1.slice(0,1));
     var ad=new Date();
-    ad.setFullYear(2016, 2, 7);
+    ad.setFullYear(2016, 2, 6);
     ad.setHours(0, 0, 0, 0);
     var add=new Date();
     add.setHours(0, 0, 0, 0);
     var nday=new Date(ad.getTime()+28*24*60*60*1000);
-   // alert(nday);
     document.getElementById("test1").textContent=num1;
     document.getElementById("test").textContent=maime;
     document.getElementById("test3").textContent=deban;
@@ -36,65 +34,97 @@ function tasu(){
     document.getElementById("test5").textContent=hi(add);
     document.getElementById("test6").textContent=nday;
     document.getElementById("test7").textContent=(add.getTime()-ad.getTime())/(24*60*60*1000);
- alert(((add.getTime()-ad.getTime())/(24*60*60*1000))%28);
-   var k = '<table class=thin>';
+   var k = '<input type="button" value="前のページへ戻る" onclick="location.reload(true)"><table class=thin><caption style="background-color:green">個別予定表</caption>';
     k += '<tr><th bgcolor="#3DF74A">年月日</th><th bgcolor="#3DF74A">曜</th><th bgcolor="#3DF74A">予定</th></tr>'; 
-     do{
-      // alert(((add.getTime()-ad.getTime())/(24*60*60*1000))%28);   
+     do{   
       day = new Date(hi(add));//iには'2007/5/5':'PHP攻略完了'の形式の前の方の文字列が入っている。
       w = week[day.getDay()];//曜日を取得
-    var aq=parseInt(deban+maime);
-    if (ar[aq]=="   "){ar[aq]="白";}
-    if (ar[aq]==undefined){ar[aq]="休み";}
-   
-       k += '<tr><th>' + hi(add) + '</th><td>' + w + '</td><td>' +deban+maime+" "+ar[aq] +'</td></tr>';
+        var aq=parseInt(deban+maime);
+      switch(day.getDay()){
+           case 0:
+               var c="<tr bgcolor='red'>";
+               var job=nichiyo[aq];
+               break;
+           case 6:
+               var c="<tr bgcolor='aqua'>";
+               var job=doyo[aq];
+               break;
+           default:
+               var c="<tr bgcolor='white'>";
+               var job=ar[aq];
+               break;
+       }
+    //var aq=parseInt(deban+maime);
+    if (job=="   "){job="白";}
+    if (job==undefined){job="休み";}
+       k += c+'<th>' + hi(add) + '</th><td>' + w + '</td><td>' +deban+maime+" "+job +'</td></tr>';
       if (((add.getTime()-ad.getTime())/(24*60*60*1000))%28!=0){deban+=1;}else{deban=deban;}
-     // deban+=1;
       aday(add);
       }while(deban<8);
-      maime=parseInt(maime, 10)+1;
-     // alert(maime);
-     for(j=1;j<10;j++){
+      maime=(parseInt(maime, 10))%48+1;
+      if (maime<10){maime="0"+maime;}
+     for(j=1;j<16;j++){
      for (i=1;i<8;i++){
          day=new Date(hi(add));
          w=week[day.getDay()];
+         
          if (((add.getTime()-ad.getTime())/(24*60*60*1000))%28==0){
              var aq=(""+i+maime);
-              if (ar[aq]=="   "){ar[aq]="白";}
-         if (ar[aq]==undefined){ar[aq]="休み";}
-       k += '<tr><th>' + hi(add) + '</th><td>' + w + '</td><td>' +i+maime+" "+ar[aq] +'</td></tr>';
+             switch(day.getDay()){
+           case 0:
+               var c="<tr bgcolor='red'>";
+               var job=nichiyo[aq];
+               break;
+           case 6:
+               var c="<tr bgcolor='aqua'>";
+               var job=doyo[aq];
+               break;
+           default:
+               var c="<tr bgcolor='white'>";
+               var job=ar[aq];
+               break;
+       }
+              if (job=="   "){job="白";}
+         if (job==undefined){job="休み";}
+       k += c+'<th>' + hi(add) + '</th><td>' + w + '</td><td>' +i+maime+" "+job +'</td></tr>';
       aday(add);
       day=new Date(hi(add));
          w=week[day.getDay()];
+        
              } 
          var aq=(""+i+maime);
-      //   alert(ad);
-         if (ar[aq]=="   "){ar[aq]="白";}
-         if (ar[aq]==undefined){ar[aq]="休み";}
-       k += '<tr><th>' + hi(add) + '</th><td>' + w + '</td><td>' +i+maime+" "+ar[aq] +'</td></tr>';
+          switch(day.getDay()){
+           case 0:
+               var c="<tr bgcolor='red'>";
+               var job=nichiyo[aq];
+               break;
+           case 6:
+               var c="<tr bgcolor='aqua'>";
+               var job=doyo[aq];
+               break;
+           default:
+               var c="<tr bgcolor='white'>";
+               var job=ar[aq];
+               break;
+       }
+         if (job=="   "){job="白";}
+         if (job==undefined){job="休み";}
+       k += c+'<th>' + hi(add) + '</th><td>' + w + '</td><td>' +i+maime+" "+job +'</td></tr>';
       aday(add);
      }
-     maime=parseInt(maime, 10)+1;
+     maime=(parseInt(maime, 10))%48+1;
+     if (maime<10){maime="0"+maime;}
 }
     k += '</table>';
    document.body.innerHTML = k;
 }
 function ta(){
-    var myDate=new Date();
-    myDate.setHours(0, 0, 0, 0);
-    myDate.setFullYear(2016);
-    myDate.setDate(8);
-    myDate.setMonth(1);
-    for (i=1;i<10;i++){
-  // document.write("東"+"</br>");
-    myDate.setDate(myDate.getDate()+28);
-    document.write(myDate+"</br>");
-    myDate.setDate(myDate.getDate()+28);
-    document.write(myDate+"</br>");}
+  
 }
 
 </script>
 <center>
+
 <p id="test1">2</p>
 <p id="test">1</p>
 <p id="test3">3</p>
