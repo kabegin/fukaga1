@@ -26,7 +26,41 @@ var now = new Date();
 var expires = new Date(now.getTime()+24*60*60*1000*dd);
 return(expires.toGMTString());
 }
-
-
+function a1(){
+    var a=1,b=1;
+    ni(a,b);
+}
+function b1(){
+     var a=2,b=1;
+    ni(a,b);
+}
+function c1(){
+     var a=3,b=1;
+    ni(a,b);
+}
+function d1(){
+     var a=4,b=1;
+    ni(a,b);
+}
+function a2(){
+     var a=1,b=2;
+    ni(a,b);
+}
+function b2(){
+     var a=2,b=2;
+    ni(a,b);
+}
+function c2(){
+     var a=3,b=2;
+    ni(a,b);
+}
+function d2(){
+     var a=4,b=2;
+    ni(a,b);
+}
+function ni(a,b){
+    alert(a);
+    alert(b);
+}
 
 
