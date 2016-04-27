@@ -10,11 +10,21 @@
     <script src="sub1.js"></script>
     <link rel="stylesheet" href="components/loader.css">
     <link rel="stylesheet" href="css/style.css">
-    <script>
+  
+
+
     </script>
 </head>
 <body>
 <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-75423983-1', 'auto');
+  ga('send', 'pageview');
+
 
 function tasu(){
     var num1=document.keisan.elements[0].value;
@@ -58,14 +68,14 @@ function tasu(){
        }
     //var aq=parseInt(deban+maime);
     if (job=="   "){job="白";}
-    if (job==undefined){job="休み";}
+    if (job==undefined || deban=="7"){job="休み";}//or maime="7"
        k += c+'<th>' + hi(add) + '</th><td>' + w + '</td><td>' +deban+maime+" "+job +'</td></tr>';
       if (((add.getTime()-ad.getTime())/(24*60*60*1000))%28!=0){deban+=1;}else{deban=deban;}
       aday(add);
       }while(deban<8);
       maime=(parseInt(maime, 10))%48+1;
       if (maime<10){maime="0"+maime;}
-     for(j=1;j<16;j++){
+     for(j=1;j<30;j++){
      for (i=1;i<8;i++){
          day=new Date(hi(add));
          w=week[day.getDay()];
@@ -96,7 +106,7 @@ function tasu(){
                break;
        }
               if (job=="   "){job="白";}
-         if (job==undefined){job="休み";}
+         if (job==undefined || i==7){job="休み";}
        k += c+'<th>' + hi(add) + '</th><td>' + w + '</td><td>' +i+maime+" "+job +'</td></tr>';
       aday(add);
       day=new Date(hi(add));
@@ -128,7 +138,7 @@ function tasu(){
                break;
        }
          if (job=="   "){job="白";}
-         if (job==undefined){job="休み";}
+         if (job==undefined || i==7){job="休み";}
        k += c+'<th>' + hi(add) + '</th><td>' + w + '</td><td>' +i+maime+" "+job +'</td></tr>';
       aday(add);
      }
@@ -191,7 +201,7 @@ function tase(){
        }
     //var aq=parseInt(deban+maime);
     if (job=="   "){job="白";}
-    if (job==undefined){job="休み";}
+    if (job==undefined || deban=="7"){job="休み";}
        k += c+'<th>' + hi(add) + '</th><td>' + w + '</td><td>' +deban+maime+" "+job +'</td></tr>';
       if (((add.getTime()-ad.getTime())/(24*60*60*1000))%28!=0){deban+=1;}else{deban=deban;}
       aday(add);
@@ -200,7 +210,7 @@ function tase(){
       //maime=(parseInt(maime, 10))%48+1;
       if(maime==50){maime=2;}
       if (maime<10){maime="0"+maime;}
-     for(j=1;j<16;j++){
+     for(j=1;j<30;j++){
      for (i=1;i<8;i++){
          day=new Date(hi(add));
          w=week[day.getDay()];
@@ -230,7 +240,7 @@ function tase(){
                break;
        }
               if (job=="   "){job="白";}
-         if (job==undefined){job="休み";}
+         if (job==undefined || i==7){job="休み";}
        k += c+'<th>' + hi(add) + '</th><td>' + w + '</td><td>' +i+maime+" "+job +'</td></tr>';
       aday(add);
       day=new Date(hi(add));
@@ -261,7 +271,7 @@ function tase(){
                break;
        }
          if (job=="   "){job="白";}
-         if (job==undefined){job="休み";}
+         if (job==undefined ||i==7){job="休み";}
        k += c+'<th>' + hi(add) + '</th><td>' + w + '</td><td>' +i+maime+" "+job +'</td></tr>';
       aday(add);
      }
