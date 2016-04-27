@@ -68,7 +68,7 @@ function ni(a,b){
     var add=new Date();
     var nana=0;
     add.setHours(0, 0, 0, 0);
-    var k = maime+" "+deban+" "+a+" "+b+'<input type="button" value="前のページへ戻る" onclick="location.reload(true)"><table class=thin><caption style="background-color:green">個別予定表</caption>';
+    var k ='<input type="button" value="前のページへ戻る" onclick="location.reload(true)"><table class=thin><caption style="background-color:green">個別予定表</caption>';
     k += '<tr><th bgcolor="#3DF74A">年月日</th><th bgcolor="#3DF74A">曜</th><th bgcolor="#3DF74A">予定</th></tr>'; 
      //   k += '</table>';
    
