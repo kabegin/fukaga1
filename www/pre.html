@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <link rel="stylesheet" href="components/loader.css">
+    <script type="text/javascript" src="ncmb.min.js" charset="utf-8"></script>
+    <script src="components/loader.js"></script>
+    <style>
+        body {
+            background-color: #BBDEFB;
+            padding-top: 20px;
+            font-family: Verdana, sans-serif;
+            
+        }
+        form {
+            margin: 30px auto;
+            text-align: center;
+        }
+        input {
+            border-radius: 5px;
+            padding: 7px;
+            margin-bottom: 10px;
+            width: 200px;
+            font-size: 20px;
+        }
+         button{
+            padding: 14px 30px;
+
+        }
+    </style>
+
+
+</head>
+<body>
+    <script>
+   // https://mb.api.cloud.nifty.com/2013-09-01/applications/EIcVuJgSJVJltWxJ/publicFiles/101.jpg
+    var NCMB = NCMB || require("./ncmb");
+        var ncmb = new NCMB("6ca2ff8ccaa6bf29a5f132fb86e855f54a053f6cb052ca6eb4cac54384344b92","8530ec559cbc8f3e173359c1a64a7e614249a8632a95f6cafdc8791dbaaaa813");     
+       //ncmb.User.loginWithMailAddress("kabegin@gmail.com");
+       var user = ncmb.User.getCurrentUser();
+       var user1=user.get("mailAddress");
+       alert(user1);
+            if (user !== null) {
+                location.href = "./game.html";
+            }            
+            // ログイン・新規登録処理
+               function taku() {
+                var username =document.getElementById("username").value;
+                var password =document.getElementById("password").value;
+               // alert(username);
+                // ログイン
+                var ncmb = new NCMB("6ca2ff8ccaa6bf29a5f132fb86e855f54a053f6cb052ca6eb4cac54384344b92","8530ec559cbc8f3e173359c1a64a7e614249a8632a95f6cafdc8791dbaaaa813");     
+                ncmb.User.loginWithMailAddress(username, password)
+                .then(function() {
+                    // ログイン成功
+                     alert("ログイン成功");
+                    location.href = "./game.html";
+                })
+                .catch(function(err) {
+                    // ログイン失敗
+                    alert(err);
+                        });
+                    }
+             function shin() {
+           var username =document.getElementById("username").value;
+           alert(username);
+           var ncmb = new NCMB("6ca2ff8ccaa6bf29a5f132fb86e855f54a053f6cb052ca6eb4cac54384344b92","8530ec559cbc8f3e173359c1a64a7e614249a8632a95f6cafdc8791dbaaaa813");     
+    ncmb.User.requestSignUpEmail(username)
+         .then(function(data){
+            // 送信後処理
+            alert("OK");
+         })
+         .catch(function(err){
+             
+           // エラー処理
+          // alert(err);
+         });
+       } 
+    function rest(){
+       var username =document.getElementById("username").value;
+           alert(username);
+           var ncmb = new NCMB("6ca2ff8ccaa6bf29a5f132fb86e855f54a053f6cb052ca6eb4cac54384344b92","8530ec559cbc8f3e173359c1a64a7e614249a8632a95f6cafdc8791dbaaaa813");     
+           ncmb.User.requestPasswordReset(username)
+           .then(function(data){
+               alert("送信しました。");
+           })
+           .catch(function(err){
+               alert(err);
+           });
+    }
+    function go(){
+        var ncmb1 = new NCMB("6a8d2107f366826000808ad39d055fcb056811ad8aa3cf60161527673f1f2891","84b98d08ed21b89fe1c114fa1723ca23e21e69f7fce552aa9f278728d2d52ab0");     
+        var TestClass = ncmb1.DataStore("TestClass");
+      // 3.TestClassへの入出力
+      TestClass.equalTo("message", "Hello, NCMB!")
+               .fetchAll()
+               .then(function(results){
+                 if(results[0] != null){
+                   alert(results[0].get("message"));
+                 }else{
+                   var testClass = new TestClass();
+                   testClass.set("message", "Hello, NCMB!");
+                   testClass.save()
+                            .then(function(){
+                              alert("message is saved.");
+                            })
+                            .catch(function(err){
+                              alert(err.text);
+                            });
+                 }
+               })
+               .catch(function(err){
+                alert(err.text);
+               });
+        
+    }
+    </script>
+    
+    <form>
+        <input type="text" id="username" placeholder="メールアドレス" />
+        <input type="password" id="password" placeholder="パスワード" />
+        <br />
+        <button onclick="taku()">ログイン</button>
+        <button onclick="shin()">新規登録</button>
+        <button onclick="rest()">リセット</button>
+        <button onclick="go()">ごー</button>
+    </form>
+
+</body>
+</html>

@@ -11,9 +11,6 @@
     <link rel="stylesheet" href="components/loader.css">
     <link rel="stylesheet" href="css/style.css">
   
-
-
-    </script>
 </head>
 <body>
 <script>
@@ -37,7 +34,9 @@ function tasu(){
     add.setHours(0, 0, 0, 0);
     var nday=new Date(ad.getTime()+28*24*60*60*1000);
    
-   var k = '<input type="button" value="前のページへ戻る" onclick="location.reload(true)"><table class=thin><caption style="background-color:green">個別予定表</caption>';
+    var k = '<input type="button" value="前のページへ戻る" onclick="location.reload(true)"><table class=thin><caption style="background-color:green">個別予定表</caption>';
+    //k +='<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" defer="defer">\x3c/script><!-- fukagawa --><ins class="adsbygoogle"style="display:block"data-ad-client="ca-pub-5061506355151225"data-ad-slot="3920317659"data-ad-format="auto"></ins><script defer="defer">(adsbygoogle = window.adsbygoogle || []).push({});\x3c/script>');
+   // k +='&nbsp;<script defer="defer">(adsbygoogle = window.adsbygoogle || []).push({});\x3c/script>'
     k += '<tr><th bgcolor="#3DF74A">年月日</th><th bgcolor="#3DF74A">曜</th><th bgcolor="#3DF74A">予定</th></tr>'; 
      do{   
       day = new Date(hi(add));//iには'2007/5/5':'PHP攻略完了'の形式の前の方の文字列が入っている。
@@ -75,6 +74,7 @@ function tasu(){
       }while(deban<8);
       maime=(parseInt(maime, 10))%48+1;
       if (maime<10){maime="0"+maime;}
+     //k +="<script async src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'>\x3c/script><!-- fukagawa --><ins class='adsbygoogle'style='display:block'data-ad-client='ca-pub-5061506355151225'data-ad-slot='3920317659'data-ad-format='auto'></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});\x3c/script>");
      for(j=1;j<30;j++){
      for (i=1;i<8;i++){
          day=new Date(hi(add));
@@ -146,7 +146,7 @@ function tasu(){
      if (maime<10){maime="0"+maime;}
 }
     k += '</table>';
-   document.body.innerHTML = k;
+   document.getElementById("all").innerHTML = k;
 }
 function ta(){
   var arr = ["a", "b", "c"];
@@ -281,7 +281,8 @@ function tase(){
      if (maime<10){maime="0"+maime;}
 }
     k += '</table>';
-   document.body.innerHTML = k;
+   document.getElementById("all").innerHTML = k;
+   
 }   
 
 </script>
@@ -296,7 +297,7 @@ function tase(){
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-
+<div id="all">
 <p id="test7">今日の本番は</p>
 <form name="keisan">
 <input type="number" min="100" max="748" value="339"/><br />ダイヤ<br />
@@ -319,7 +320,11 @@ function tase(){
     <button style="width:20%" onclick="d2()">D</button>
 </p>
 </fieldset>
+<fieldset><legend>会員制ページ</legend>
+<button style="width:80%" onclick="location.href='pre.html'">会員</button>
+</fieldset>
 <A Href="mailto:kabegin@gmail.com">ご意見</A>
+</div>
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- fukagawa -->
 <ins class="adsbygoogle"

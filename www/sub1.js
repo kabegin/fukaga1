@@ -1,4 +1,6 @@
 var week = new Array("日","月","火","水","木","金","土"); 
+        var ncmb = new NCMB("6ca2ff8ccaa6bf29a5f132fb86e855f54a053f6cb052ca6eb4cac54384344b92","8530ec559cbc8f3e173359c1a64a7e614249a8632a95f6cafdc8791dbaaaa813");     
+
 function getToday(){
 var now = new Date();
 var yyyy = now.getFullYear();
@@ -141,7 +143,7 @@ day = new Date(hi(add));//iには'2007/5/5':'PHP攻略完了'の形式の前の�
  //   if(day.getDay()==1&&deban==7&&nana==1){if(b==2){b=1,nana=0;}else{b=2,nana=0;}}
 }
 //if (((add.getTime()-ad.getTime())/(24*60*60*1000))%28!=1){deban+=1;}else{deban=deban;}
-      document.body.innerHTML = k; 
+      document.getElementById("all").innerHTML = k; 
 }
 
 
