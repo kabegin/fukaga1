@@ -15,6 +15,11 @@
     "description-ja": "",
     "description-en": "",
     "category": "User Template",
-    "platform": [],
-    "name": "generated-1464865475-569b1d58fd173458701c5085"
+    "platform": [
+        "android",
+        "ios",
+        "winrt",
+        "chrome"
+    ],
+    "name": "generated-1464917449-569b1d58fd173458701c5085"
 }

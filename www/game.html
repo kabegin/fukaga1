@@ -6,6 +6,8 @@
     <meta http-equiv="Content-Security-Policy" content="default-src *; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
     <link rel="stylesheet" href="components/loader.css">
     <script src="components/loader.js"></script>
+    <script src="test1.js"></script>
+    <script src="sub1.js"></script>
     <script type="text/javascript" src="ncmb.min.js" charset="utf-8"></script>
     <script>
     function logout(){
@@ -15,17 +17,14 @@
     ncmb.User.logout();
     var currentUser = ncmb.User.getCurrentUser();
 if (currentUser) {
-    alert(currentUser);
+  //  alert(currentUser);
    ncmb.User.logout(); 
    location.href = "./pre.html";
 } else {
     console.log("未ログインまたは取得に失敗");
 }
     }
-        //
-        // TODO: Write JavaScript code here
-        //
-    </script>
+     </script>
 </head>
 <body>
 <button onclick="logout()">out</button>
