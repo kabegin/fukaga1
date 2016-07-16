@@ -145,7 +145,7 @@ function tasu(){
      maime=(parseInt(maime, 10))%48+1;
      if (maime<10){maime="0"+maime;}
 }
-    k += '</table>';
+    k += '</table><input type="button" value="前のページへ戻る" onclick="location.reload(true)">';
    document.getElementById("all").innerHTML = k;
 }
 function ta(){
@@ -280,7 +280,7 @@ function tase(){
     if(maime==50){maime=2;}
      if (maime<10){maime="0"+maime;}
 }
-    k += '</table>';
+    k += '</table><input type="button" value="前のページへ戻る" onclick="location.reload(true)">';
    document.getElementById("all").innerHTML = k;
    
 }   
@@ -300,28 +300,27 @@ function tase(){
 <div id="all">
 <p id="test7">今日の本番は</p>
 <form name="keisan">
-<input type="number" min="100" max="748" value="339"/><br />ダイヤ<br />
-
+<input type="number" min="100" max="748" value="339" style="font-size:20px;">ダイヤ
 </form>
 <fieldset><legend>一般</legend>
-<button style="width:40%" onclick="tasu()">小</button>
-<button style="width:40%" onclick="tase()">大</button>
+<button style="width:40%;height:40px" onclick="tasu()">小</button>
+<button style="width:40%;height:40px" onclick="tase()">大</button>
 
 </fieldset>
 
 <fieldset><legend>日曜</legend>
-<p>小<button style="width:20%" onclick="a1()">A</button>
-    <button style="width:20%" onclick="b1()">B</button>
-    <button style="width:20%" onclick="c1()">C</button>
-    <button style="width:20%" onclick="d1()">D</button>
-   </p><p>大<button style="width:20%" onclick="a2()">A</button>
-    <button style="width:20%" onclick="b2()">B</button>
-    <button style="width:20%" onclick="c2()">C</button>
-    <button style="width:20%" onclick="d2()">D</button>
+<p>小<button style="width:20%;height:40px" onclick="a1()">A</button>
+    <button style="width:20%;height:40px" onclick="b1()">B</button>
+    <button style="width:20%;height:40px" onclick="c1()">C</button>
+    <button style="width:20%;height:40px" onclick="d1()">D</button>
+   </p><p>大<button style="width:20%;height:40px" onclick="a2()">A</button>
+    <button style="width:20%;height:40px" onclick="b2()">B</button>
+    <button style="width:20%;height:40px" onclick="c2()">C</button>
+    <button style="width:20%;height:40px" onclick="d2()">D</button>
 </p>
 </fieldset>
 <fieldset><legend>会員制ページ</legend>
-<button style="width:80%" onclick="location.href='pre.html'">会員</button>
+<button style="width:80%;height:30px" onclick="location.href='pre.html'">会員</button>
 </fieldset>
 <A Href="mailto:kabegin@gmail.com">ご意見</A>
 </div>
