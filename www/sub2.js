@@ -146,7 +146,7 @@ day = new Date(hi(add));//iには'2007/5/5':'PHP攻略完了'の形式の前の�
  k += '</table><input type="button" value="前のページへ戻る" onclick="location.reload(true)">';
       document.getElementById("all").innerHTML = k; 
 }
-$('td').live('click',function(){
+$(document).on('click','td',function(){
    // alert("123");
    var you=null;
     var $cur_td=$(this)[0];
