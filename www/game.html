@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1,user-scalable=yes">
     <meta http-equiv="Content-Security-Policy" content="default-src *; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
     <link rel="stylesheet" href="components/loader.css">
    <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
@@ -14,17 +14,18 @@
     <script>
      var ncmb = new NCMB("6ca2ff8ccaa6bf29a5f132fb86e855f54a053f6cb052ca6eb4cac54384344b92","8530ec559cbc8f3e173359c1a64a7e614249a8632a95f6cafdc8791dbaaaa813");     
      var currentUser = ncmb.User.getCurrentUser();
-if (!currentUser) {location.href = "./pre.html";}
+     if (!currentUser) {location.href = "./pre.html";}
     function logout(){
     //    alert("logout");
     //var NCMB = NCMB || require("./ncmb");
     var ncmb = new NCMB("6ca2ff8ccaa6bf29a5f132fb86e855f54a053f6cb052ca6eb4cac54384344b92","8530ec559cbc8f3e173359c1a64a7e614249a8632a95f6cafdc8791dbaaaa813");     
     ncmb.User.logout();
     var currentUser = ncmb.User.getCurrentUser();
-if (currentUser) {
+   if (currentUser) {
   //  alert(currentUser);
+   //currentUser.logout();
    ncmb.User.logout(); 
-   location.href = "./pre.html";
+   location.href = "./index.html";
 } else {
     console.log("未ログインまたは取得に失敗");
 }
@@ -36,7 +37,7 @@ if (currentUser) {
          text-align: center;
      }
 #modal-content{
-    width:50%;
+    width:80%;
 	margin:1.5em auto 0;
 	padding:10px 20px;
 	border:2px solid #aaa;
@@ -106,8 +107,8 @@ td{
     <button style="width:20%;height:40px" onclick="d2()">D</button>
 </p>
 </fieldset>
-<fieldset><legend>logout</legend>
-<button style="width:80%;height:30px" onclick="logout()">ログアウト</button>
+<fieldset><legend>Top</legend>
+<button style="width:80%;height:30px" onclick="logout()">トップページへ</button>
 </fieldset>
 <A Href="mailto:kabegin@gmail.com">ご意見</A>
 </div>
