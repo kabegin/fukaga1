@@ -152,9 +152,9 @@ $('td').live('click',function(){
     var $cur_tr=$(this).parent()[0];
    var b=$(this).text().substr(0,3);
     var a=$(this).parent("tr").css("background-color").toString();
-    if(a=="rgb(255, 0, 0)"||a=="rgb(255, 192, 203)"){you="7"+b;}else{
+    if(a=="rgb(255, 0, 0)"||a=="rgb(255, 192, 203)"){you="img/7"+b+".jpg";}else{
   //  if(a=="rgb(255, 192, 203)"){alert("祭");}
-    if(a=="rgb(0, 255, 255)"){you="6"+b;}else{you=b;}}
+    if(a=="rgb(0, 255, 255)"){you="img/6"+b+".jpg";}else{you="img/"+b+".jpg";}}
 //    var tmp = a.match(/rgb\((.*),(.*),(.*)\)/);
  //   var r = tmp[1];
   //  var g = tmp[2];
@@ -186,8 +186,8 @@ $('td').live('click',function(){
 		} ) ;
 
 	} ) ;
-
-$(".gouto").html(you);
+//alert(you);
+$("img").attr("src",you);
 });
 //リサイズされたら、センタリングをする関数[centeringModalSyncer()]を実行する
 $( window ).resize( centeringModalSyncer ) ;
