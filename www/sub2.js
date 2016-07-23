@@ -210,6 +210,10 @@ $( window ).resize( centeringModalSyncer ) ;
 		$( "#modal-content" ).css( {"left": ((w - cw)/2) + "px","top": ((h - ch)/2) + "px"} ) ;
 
 	}
-
+$(document).ready(function(){
+    $('img').error(function(){
+        $(this).attr("src","img/100.jpg");
+    });
+});
 
 
