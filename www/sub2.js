@@ -76,7 +76,7 @@ function ni(a,b){
    
 //   document.write(ad);
 //   document.write(add);
-for (i=1;i<170;i++){
+for (i=1;i<220;i++){
 day = new Date(hi(add));//iには'2007/5/5':'PHP攻略完了'の形式の前の方の文字列が入っている。
       w = week[day.getDay()];//曜日を取得
         var aq=parseInt(deban+maime,10);
@@ -143,6 +143,7 @@ day = new Date(hi(add));//iには'2007/5/5':'PHP攻略完了'の形式の前の�
  //   if(day.getDay()==1&&deban==7&&nana==1){if(b==2){b=1,nana=0;}else{b=2,nana=0;}}
 }
 //if (((add.getTime()-ad.getTime())/(24*60*60*1000))%28!=1){deban+=1;}else{deban=deban;}
+ k += '</table><input type="button" value="前のページへ戻る" onclick="location.reload(true)">';
       document.getElementById("all").innerHTML = k; 
 }
 $('td').live('click',function(){
@@ -215,5 +216,266 @@ $(document).ready(function(){
         $(this).attr("src","img/100.jpg");
     });
 });
+function tasu(){
+    var num1=document.keisan.elements[0].value;
+    var maime=String(num1.slice(-2));
+    var deban=parseInt(num1.slice(0,1));
+    var ad=new Date();
+    ad.setFullYear(2016, 2, 6);
+    ad.setHours(0, 0, 0, 0);
+    var add=new Date();
+    add.setHours(0, 0, 0, 0);
+    var nday=new Date(ad.getTime()+28*24*60*60*1000);
+   
+    var k = '<input type="button" value="前のページへ戻る" onclick="location.reload(true)"><table class=thin><caption style="background-color:green">個別予定表</caption>';
+    //k +='<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" defer="defer">\x3c/script><!-- fukagawa --><ins class="adsbygoogle"style="display:block"data-ad-client="ca-pub-5061506355151225"data-ad-slot="3920317659"data-ad-format="auto"></ins><script defer="defer">(adsbygoogle = window.adsbygoogle || []).push({});\x3c/script>');
+   // k +='&nbsp;<script defer="defer">(adsbygoogle = window.adsbygoogle || []).push({});\x3c/script>'
+    k += '<tr><th bgcolor="#3DF74A">年月日</th><th bgcolor="#3DF74A">曜</th><th bgcolor="#3DF74A">予定</th></tr>'; 
+     do{   
+      day = new Date(hi(add));//iには'2007/5/5':'PHP攻略完了'の形式の前の方の文字列が入っている。
+      w = week[day.getDay()];//曜日を取得
+        var aq=parseInt(deban+maime);
+      switch(day.getDay()){
+           case 0:
+               var c="<tr bgcolor='red'>";
+               var job=nichiyo[aq];
+               break;
+           case 6:
+               if(kyu.indexOf(hi(add))>0){
+           　     var c="<tr bgcolor='pink'>";
+               var job=nichiyo[aq];
+               break;}
+               var c="<tr bgcolor='aqua'>";
+               var job=doyo[aq];
+               break;
+           default:
+           　if(kyu.indexOf(hi(add))>0){
+           　     var c="<tr bgcolor='pink'>";
+               var job=nichiyo[aq];
+               break;
+           　}
+               var c="<tr bgcolor='white'>";
+               var job=ar[aq];
+               break;
+       }
+    //var aq=parseInt(deban+maime);
+    if (job=="   "){job="白";}
+    if (job==undefined || deban=="7"){job="休み";}//or maime="7"
+       k += c+'<th>' + hi(add) + '</th><td>' + w + '</td><td>' +deban+maime+" "+job +'</td></tr>';
+      if (((add.getTime()-ad.getTime())/(24*60*60*1000))%28!=0){deban+=1;}else{deban=deban;}
+      aday(add);
+      }while(deban<8);
+      maime=(parseInt(maime, 10))%48+1;
+      if (maime<10){maime="0"+maime;}
+     //k +="<script async src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'>\x3c/script><!-- fukagawa --><ins class='adsbygoogle'style='display:block'data-ad-client='ca-pub-5061506355151225'data-ad-slot='3920317659'data-ad-format='auto'></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});\x3c/script>");
+     for(j=1;j<30;j++){
+     for (i=1;i<8;i++){
+         day=new Date(hi(add));
+         w=week[day.getDay()];
+         
+         if (((add.getTime()-ad.getTime())/(24*60*60*1000))%28==0){
+             var aq=(""+i+maime);
+             switch(day.getDay()){
+           case 0:
+               var c="<tr bgcolor='red'>";
+               var job=nichiyo[aq];
+               break;
+           case 6:
+               if(kyu.indexOf(hi(add))>0){
+           　     var c="<tr bgcolor='pink'>";
+               var job=nichiyo[aq];
+               break;}
+               var c="<tr bgcolor='aqua'>";
+               var job=doyo[aq];
+               break;
+           default:
+              
+           　if(kyu.indexOf(hi(add))>0){
+           　     var c="<tr bgcolor='pink'>";
+               var job=nichiyo[aq];
+               break;}
+               var c="<tr bgcolor='white'>";
+               var job=ar[aq];
+               break;
+       }
+              if (job=="   "){job="白";}
+         if (job==undefined || i==7){job="休み";}
+       k += c+'<th>' + hi(add) + '</th><td>' + w + '</td><td>' +i+maime+" "+job +'</td></tr>';
+      aday(add);
+      day=new Date(hi(add));
+         w=week[day.getDay()];
+        
+             } 
+         var aq=(""+i+maime);
+          switch(day.getDay()){
+           case 0:
+               var c="<tr bgcolor='red'>";
+               var job=nichiyo[aq];
+               break;
+           case 6:
+               if(kyu.indexOf(hi(add))>0){
+           　     var c="<tr bgcolor='pink'>";
+               var job=nichiyo[aq];
+               break;}
+               var c="<tr bgcolor='aqua'>";
+               var job=doyo[aq];
+               break;
+           default:
+           if(kyu.indexOf(hi(add))>0){
+           　     var c="<tr bgcolor='pink'>";
+               var job=nichiyo[aq];
+               break;}
+           
+               var c="<tr bgcolor='white'>";
+               var job=ar[aq];
+               break;
+       }
+         if (job=="   "){job="白";}
+         if (job==undefined || i==7){job="休み";}
+       k += c+'<th>' + hi(add) + '</th><td>' + w + '</td><td>' +i+maime+" "+job +'</td></tr>';
+      aday(add);
+     }
+     maime=(parseInt(maime, 10))%48+1;
+     if (maime<10){maime="0"+maime;}
+}
+    k += '</table><input type="button" value="前のページへ戻る" onclick="location.reload(true)">';
+   document.getElementById("all").innerHTML = k;
+}
+function ta(){
+  var arr = ["a", "b", "c"];
+if (arr.indexOf("a") >= 0){
+  // 存在する
+alert("開発中");}
+//console.log(kyu);}
+if (arr.indexOf("c") == -1){
+  // 存在しない
+//  alert("存在しない");
+}
+}
+function tase(){
+   
+     var num1=document.keisan.elements[0].value;
+    var maime=String(num1.slice(-2));
+    var deban=parseInt(num1.slice(0,1));
+    var ad=new Date();
+    ad.setFullYear(2016, 2, 6);
+    ad.setHours(0, 0, 0, 0);
+    var add=new Date();
+    add.setHours(0, 0, 0, 0);
+    var nday=new Date(ad.getTime()+28*24*60*60*1000);
+   
+   var k = '<input type="button" value="前のページへ戻る" onclick="location.reload(true)"><table class=thin><caption style="background-color:green">個別予定表</caption>';
+    k += '<tr><th bgcolor="#3DF74A">年月日</th><th bgcolor="#3DF74A">曜</th><th bgcolor="#3DF74A">予定</th></tr>'; 
+     do{   
+      day = new Date(hi(add));//iには'2007/5/5':'PHP攻略完了'の形式の前の方の文字列が入っている。
+      w = week[day.getDay()];//曜日を取得
+        var aq=parseInt(deban+maime);
+      switch(day.getDay()){
+           case 0:
+               var c="<tr bgcolor='red'>";
+               var job=nichiyo[aq];
+               break;
+           case 6:
+                if(kyu.indexOf(hi(add))>0){
+           　     var c="<tr bgcolor='pink'>";
+               var job=nichiyo[aq];
+               break;}
+               var c="<tr bgcolor='aqua'>";
+               var job=doyo[aq];
+               break;
+           default:
+            if(kyu.indexOf(hi(add))>0){
+           　     var c="<tr bgcolor='pink'>";
+               var job=nichiyo[aq];
+               break;}
+               var c="<tr bgcolor='white'>";
+               var job=ar[aq];
+               break;
+       }
+    //var aq=parseInt(deban+maime);
+    if (job=="   "){job="白";}
+    if (job==undefined || deban=="7"){job="休み";}
+       k += c+'<th>' + hi(add) + '</th><td>' + w + '</td><td>' +deban+maime+" "+job +'</td></tr>';
+      if (((add.getTime()-ad.getTime())/(24*60*60*1000))%28!=0){deban+=1;}else{deban=deban;}
+      aday(add);
+      }while(deban<8);
+      if((parseInt(maime, 10))%2==0){maime=(parseInt(maime, 10)-1)%48;}else{maime=(parseInt(maime, 10)+3)%48;}
+      //maime=(parseInt(maime, 10))%48+1;
+      if(maime==50){maime=2;}
+      if (maime<10){maime="0"+maime;}
+     for(j=1;j<30;j++){
+     for (i=1;i<8;i++){
+         day=new Date(hi(add));
+         w=week[day.getDay()];
+         
+         if (((add.getTime()-ad.getTime())/(24*60*60*1000))%28==0){
+             var aq=(""+i+maime);
+             switch(day.getDay()){
+           case 0:
+               var c="<tr bgcolor='red'>";
+               var job=nichiyo[aq];
+               break;
+           case 6:
+                if(kyu.indexOf(hi(add))>0){
+           　     var c="<tr bgcolor='pink'>";
+               var job=nichiyo[aq];
+               break;}
+               var c="<tr bgcolor='aqua'>";
+               var job=doyo[aq];
+               break;
+           default:
+            if(kyu.indexOf(hi(add))>0){
+           　     var c="<tr bgcolor='pink'>";
+               var job=nichiyo[aq];
+               break;}
+               var c="<tr bgcolor='white'>";
+               var job=ar[aq];
+               break;
+       }
+              if (job=="   "){job="白";}
+         if (job==undefined || i==7){job="休み";}
+       k += c+'<th>' + hi(add) + '</th><td>' + w + '</td><td>' +i+maime+" "+job +'</td></tr>';
+      aday(add);
+      day=new Date(hi(add));
+         w=week[day.getDay()];
+        
+             } 
+         var aq=(""+i+maime);
+          switch(day.getDay()){
+           case 0:
+               var c="<tr bgcolor='red'>";
+               var job=nichiyo[aq];
+               break;
+           case 6:
+                if(kyu.indexOf(hi(add))>0){
+           　     var c="<tr bgcolor='pink'>";
+               var job=nichiyo[aq];
+               break;}
+               var c="<tr bgcolor='aqua'>";
+               var job=doyo[aq];
+               break;
+           default:
+            if(kyu.indexOf(hi(add))>0){
+           　     var c="<tr bgcolor='pink'>";
+               var job=nichiyo[aq];
+               break;}
+               var c="<tr bgcolor='white'>";
+               var job=ar[aq];
+               break;
+       }
+         if (job=="   "){job="白";}
+         if (job==undefined ||i==7){job="休み";}
+       k += c+'<th>' + hi(add) + '</th><td>' + w + '</td><td>' +i+maime+" "+job +'</td></tr>';
+      aday(add);
+     }
+     if((parseInt(maime, 10))%2==0){maime=(parseInt(maime, 10)-1)%48;}else{maime=(parseInt(maime, 10))%48+3;}
+    // maime=(parseInt(maime, 10))%48+1;
+    if(maime==50){maime=2;}
+     if (maime<10){maime="0"+maime;}
+}
+    k += '</table><input type="button" value="前のページへ戻る" onclick="location.reload(true)">';
+   document.getElementById("all").innerHTML = k;
+   
+}   
 
 

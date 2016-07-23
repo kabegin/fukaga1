@@ -49,9 +49,9 @@
     //   var user = ncmb.User.getCurrentUser();
     //   var user1=user.get("mailAddress");
      //  alert(user1);
-        //    if (user !== null) {
-         //       location.href = "./game.html";
-        //    }            
+           if (user !== null) {
+               location.href = "./game.html";
+          }            
             // ログイン・新規登録処理
                function taku() {
                 var username =document.getElementById("username").value;
@@ -67,7 +67,7 @@
                 })
                 .catch(function(err) {
                     // ログイン失敗
-                    alert(err);
+                 //   alert(err);
                         });
                     }
              function shin() {
@@ -82,7 +82,7 @@
          .catch(function(err){
              
            // エラー処理
-           alert(err);
+          // alert(err);
          });
        } 
     function rest(){
@@ -96,7 +96,7 @@
                alert("送信しました。");
            })
            .catch(function(err){
-               alert(err);
+            //   alert(err);
            });
     }
     function go(){
@@ -121,7 +121,7 @@
                  }
                })
                .catch(function(err){
-                alert(err.text);
+              //  alert(err.text);
                });
         
     }
@@ -132,7 +132,6 @@
         <button onclick="taku()">ログイン</button><br />
         <button onclick="shin()">新規登録</button><br />
         <button onclick="rest()">リセット</button><br />
-        <button onclick="go()">動作確認</button><br />
         <button onclick="location.href = './index.html'">戻る</button></a>
 </body>
 </html>
