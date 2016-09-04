@@ -145,6 +145,7 @@ day = new Date(hi(add));//iには'2007/5/5':'PHP攻略完了'の形式の前の�
 //if (((add.getTime()-ad.getTime())/(24*60*60*1000))%28!=1){deban+=1;}else{deban=deban;}
  k += '</table><input type="button" value="前のページへ戻る" onclick="location.reload(true)">';
       document.getElementById("all").innerHTML = k; 
+save();
 }
 $(document).on('click','td',function(){
    // alert("123");
@@ -341,16 +342,14 @@ function tasu(){
     k += '</table><input type="button" value="前のページへ戻る" onclick="location.reload(true)">';
    document.getElementById("all").innerHTML = k;
 }
-function ta(){
-  var arr = ["a", "b", "c"];
-if (arr.indexOf("a") >= 0){
-  // 存在する
-alert("開発中");}
-//console.log(kyu);}
-if (arr.indexOf("c") == -1){
-  // 存在しない
-//  alert("存在しない");
-}
+function save(){
+var tdStr2 = $("tr").eq(1).children().eq(2).text().substr(0,3);
+var tdStr1 = $("tr").eq(1).children().eq(0).text();
+alert("開発中"+"\n"
+      +tdStr1 +"\n"
+      +tdStr2 +"\n"    
+);
+
 }
 function tase(){
    
